@@ -1,0 +1,35 @@
+<ng-container *ngIf="selectResPreg()">
+    <div class="row no-gutters">
+        <div class="col-12 text-center mt-4 mb-4">
+            <h1>{{ pregunta }}</h1> 
+        </div>
+    </div>
+    
+    <div class="row no-gutters">
+        <button type="button" class="btn btn-primary rounded-0 col-12" *ngFor="let obj of respuestas; let index=index;" 
+        [ngClass]="'col-sm-'+(12/respuestas.length)" (click)= "selectResIndex(index)">
+            <!-- <button type="button" class="btn btn-primary rounded-0 col-3" *ngFor="let obj of respuestas; let index=index;" (click)= "selectResObj(obj)"> -->
+    
+            {{obj.respuestas}}
+        </button>
+    </div>
+    
+    <div class="row no-gutters" *ngIf="selectRes">
+        <div class="alert alert-primary mt-4 text-center w-100" *ngIf="respuestaCor" role="alert">
+            <strong>Correcto</strong>
+        </div>
+        
+        <div class="alert alert-primary mt-4 text-center w-100" *ngIf="!respuestaCor" role="alert">
+            <strong>Incorrecto</strong>
+        </div>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="!selectResPreg()">
+    <div class="row no-gutters">
+        <div class="col-12 text-center mt-4 mb-4">
+            <span>Revisa la pregunta y las respuestas, algo se encuentra mal</span>
+        </div>
+    </div>
+</ng-container>
